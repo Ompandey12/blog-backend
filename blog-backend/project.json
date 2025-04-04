@@ -1,0 +1,32 @@
+{
+  "name": "blog-backend",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "blog-backend/src",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "blog-backend:build",
+        "runBuildTargetDependencies": false
+      },
+      "start": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "node blog-backend/src/main.ts"
+        }
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "blog-backend:build:development"
+        },
+        "production": {
+          "buildTarget": "blog-backend:build:production"
+        }
+      }
+    }
+  },
+  "tags": []
+}

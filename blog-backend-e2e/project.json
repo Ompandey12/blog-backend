@@ -1,0 +1,17 @@
+{
+  "name": "blog-backend-e2e",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "implicitDependencies": ["blog-backend"],
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{e2eProjectRoot}"],
+      "options": {
+        "jestConfig": "blog-backend-e2e/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "dependsOn": ["blog-backend:build"]
+    }
+  }
+}
